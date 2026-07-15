@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yashwanth S — Software Engineer</title>
+<meta name="description" content="Yashwanth S — Software Engineer building cloud-native platforms and Generative AI systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A11;
+    --surface:#131320;
+    --surface-2:#191928;
+    --line:#26263C;
+    --line-soft:#1C1C2C;
+    --violet:#8B7CFA;
+    --violet-dim:#5B51A3;
+    --mint:#3ECF8E;
+    --amber:#E8A33D;
+    --text:#F2F1FA;
+    --text-mid:#A6A4C0;
+    --text-dim:#6E6C8A;
+    --display:'Space Grotesk',sans-serif;
+    --body:'Inter',sans-serif;
+    --mono:'IBM Plex Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  ::selection{background:var(--violet-dim);color:#fff;}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(10,10,17,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:var(--mono);font-size:14px;color:var(--violet);letter-spacing:0.05em;}
+  .navlinks{display:flex;gap:32px;font-size:14px;color:var(--text-mid);}
+  .navlinks a:hover{color:var(--text);}
+  .navlinks a{transition:color 0.15s;}
+  @media (max-width:640px){.navlinks{display:none;}}
+
+  /* ---------- ticker ---------- */
+  .ticker-outer{
+    margin-top:64px;
+    border-bottom:1px solid var(--line-soft);
+    background:var(--surface);
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .ticker-track{
+    display:inline-flex;
+    gap:48px;
+    padding:10px 0;
+    animation:scroll 32s linear infinite;
+  }
+  .ticker-track span{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .ticker-track .val{color:var(--mint);font-weight:500;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:96px 0 80px;position:relative;}
+  .hero-eyebrow{
+    font-family:var(--mono);font-size:13px;color:var(--mint);
+    display:flex;align-items:center;gap:8px;margin-bottom:24px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);box-shadow:0 0 8px var(--mint);}
+  h1{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(38px,6vw,64px);
+    line-height:1.05;letter-spacing:-0.02em;
+    max-width:780px;
+  }
+  h1 em{font-style:normal;color:var(--violet);}
+  .hero-sub{
+    margin-top:24px;font-size:18px;color:var(--text-mid);
+    max-width:620px;line-height:1.7;
+  }
+  .hero-actions{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--body);font-size:14px;font-weight:500;
+    padding:12px 22px;border-radius:6px;
+    border:1px solid var(--line);
+    transition:border-color 0.15s, background 0.15s;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary{background:var(--violet);border-color:var(--violet);color:#0A0A11;}
+  .btn-primary:hover{background:#9D8FFF;}
+  .btn-ghost:hover{border-color:var(--text-dim);background:var(--surface);}
+
+  /* ---------- section shell ---------- */
+  section{padding:72px 0;border-top:1px solid var(--line-soft);}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:40px;}
+  .sec-num{font-family:var(--mono);font-size:13px;color:var(--text-dim);}
+  .sec-title{font-family:var(--display);font-size:26px;font-weight:600;letter-spacing:-0.01em;}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;}
+  @media (max-width:800px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid p{color:var(--text-mid);font-size:16px;margin-bottom:16px;}
+  .about-grid p strong{color:var(--text);font-weight:500;}
+  .stat-block{
+    background:var(--surface);border:1px solid var(--line-soft);border-radius:10px;
+    padding:24px;display:flex;flex-direction:column;gap:18px;
+  }
+  .stat-row{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--line-soft);}
+  .stat-row:last-child{border-bottom:none;padding-bottom:0;}
+  .stat-num{font-family:var(--mono);font-size:22px;color:var(--mint);font-weight:500;}
+  .stat-label{font-size:13px;color:var(--text-dim);}
+
+  /* ---------- stack ---------- */
+  .stack-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px;}
+  @media (max-width:800px){.stack-groups{grid-template-columns:1fr;}}
+  .stack-group-label{
+    font-family:var(--mono);font-size:12px;color:var(--violet);
+    text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;
+  }
+  .chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:var(--mono);font-size:12.5px;color:var(--text-mid);
+    background:var(--surface);border:1px solid var(--line-soft);
+    padding:6px 12px;border-radius:5px;
+  }
+
+  /* ---------- ai table ---------- */
+  .ai-table{width:100%;border-collapse:collapse;}
+  .ai-table th{
+    text-align:left;font-family:var(--mono);font-size:12px;color:var(--text-dim);
+    text-transform:uppercase;letter-spacing:0.06em;font-weight:500;
+    padding:0 0 12px;border-bottom:1px solid var(--line);
+  }
+  .ai-table td{padding:18px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;font-size:14.5px;color:var(--text-mid);}
+  .ai-table td:first-child{color:var(--text);font-weight:500;width:220px;}
+  .bar{display:flex;gap:3px;margin-top:4px;}
+  .bar span{width:16px;height:5px;border-radius:2px;background:var(--line);}
+  .bar span.on{background:var(--mint);}
+
+  /* ---------- experience ---------- */
+  .job{
+    display:grid;grid-template-columns:160px 1fr;gap:32px;
+    padding:32px 0;border-bottom:1px solid var(--line-soft);
+  }
+  .job:last-child{border-bottom:none;}
+  @media (max-width:700px){.job{grid-template-columns:1fr;gap:8px;}}
+  .job-date{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);padding-top:4px;}
+  .job-role{font-family:var(--display);font-size:19px;font-weight:600;}
+  .job-role .co{color:var(--violet);}
+  .job-loc{font-size:13px;color:var(--text-dim);margin-top:2px;margin-bottom:16px;}
+  .job ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .job li{
+    position:relative;padding-left:18px;font-size:14.5px;color:var(--text-mid);line-height:1.65;
+  }
+  .job li::before{
+    content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--violet-dim);
+  }
+  .job li b{color:var(--text);font-weight:500;}
+  .job-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+  .job-tags span{font-family:var(--mono);font-size:11px;color:var(--text-dim);border:1px solid var(--line-soft);padding:3px 8px;border-radius:4px;}
+
+  /* ---------- education ---------- */
+  .edu{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  .edu-name{font-family:var(--display);font-size:18px;font-weight:600;}
+  .edu-school{color:var(--text-mid);font-size:14.5px;margin-top:4px;}
+  .edu-date{font-family:var(--mono);font-size:13px;color:var(--text-dim);}
+
+  /* ---------- contact / footer ---------- */
+  .contact-card{
+    background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;
+    padding:48px;text-align:center;
+  }
+  .contact-card h2{font-family:var(--display);font-size:28px;font-weight:600;margin-bottom:12px;}
+  .contact-card p{color:var(--text-mid);margin-bottom:28px;}
+  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  footer{padding:40px 0;text-align:center;}
+  footer p{font-family:var(--mono);font-size:12px;color:var(--text-dim);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">yashwanth_s <span style="color:var(--text-dim)">// portfolio</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="ticker-outer">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow"><span class="dot"></span>OPEN TO SENIOR ENGINEERING / AI ROLES</div>
+    <h1>Building banking-grade systems and the <em>AI that runs inside them.</em></h1>
+    <p class="hero-sub">Software Engineer with 7 years designing distributed platforms and Generative AI systems for banking, financial services, and e-commerce — currently at Wells Fargo, previously Flipkart and Accenture.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:yashwanthsingh997@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="#experience">View experience</a>
+      <a class="btn btn-ghost" href="https://github.com/ADD_YOUR_USERNAME" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">About</span></div>
+    <div class="about-grid">
+      <div>
+        <p><strong>7 years</strong> designing and building scalable cloud-native applications, distributed systems, and full-stack solutions across banking, financial services, and e-commerce — using Java, Spring Boot, Python, ReactJS, Node.js, Kafka, Docker, Kubernetes, and AWS.</p>
+        <p>Recent focus has shifted heavily toward <strong>applied Generative AI</strong> — building Retrieval-Augmented Generation pipelines, agentic workflows, and enterprise knowledge assistants with LangChain, LangGraph, OpenAI APIs, Anthropic Claude, and AWS Bedrock — while staying grounded in system design and production reliability.</p>
+        <p>Based in Texas, USA. M.S. in Computer &amp; Information Science, Southern Arkansas University.</p>
+      </div>
+      <div class="stat-block">
+        <div class="stat-row"><span class="stat-label">Daily transactions processed</span><span class="stat-num">12M+</span></div>
+        <div class="stat-row"><span class="stat-label">Service availability</span><span class="stat-num">99.99%</span></div>
+        <div class="stat-row"><span class="stat-label">Async events / hour</span><span class="stat-num">850K</span></div>
+        <div class="stat-row"><span class="stat-label">Docs indexed by RAG assistant</span><span class="stat-num">150K+</span></div>
+        <div class="stat-row"><span class="stat-label">Years of experience</span><span class="stat-num">7</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">Tech stack</span></div>
+    <div class="stack-groups">
+      <div>
+        <div class="stack-group-label">Languages</div>
+        <div class="chip-row">
+          <span class="chip">Java 8/11/21</span><span class="chip">Python</span><span class="chip">C++17</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">SQL</span>
+        </div>
+      </div>
+      <div>
+        <div class="stack-group-label">AI / Generative AI</div>
+        <div class="chip-row">
+          <span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">OpenAI APIs</span><span class="chip">Anthropic Claude</span><span class="chip">AWS Bedrock</span><span class="chip">Pinecone</span><span class="chip">RAG</span>
+        </div>
+      </div>
+      <div>
+        <div class="stack-group-label">Backend</div>
+        <div class="chip-row">
+          <span class="chip">Spring Boot</span><span class="chip">Spring Cloud</span><span class="chip">Node.js</span><span class="chip">Kafka</span><span class="chip">gRPC</span><span class="chip">GraphQL</span><span class="chip">REST</span>
+        </div>
+      </div>
+      <div>
+        <div class="stack-group-label">Cloud &amp; platform</div>
+        <div class="chip-row">
+          <span class="chip">AWS EKS/EC2/Lambda</span><span class="chip">Azure</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">CI/CD</span>
+        </div>
+      </div>
+      <div>
+        <div class="stack-group-label">Frontend</div>
+        <div class="chip-row">
+          <span class="chip">ReactJS</span><span class="chip">Redux</span><span class="chip">Angular</span>
+        </div>
+      </div>
+      <div>
+        <div class="stack-group-label">Data</div>
+        <div class="chip-row">
+          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Oracle</span><span class="chip">Redis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">AI / ML expertise</span></div>
+    <table class="ai-table">
+      <thead><tr><th>Domain</th><th>Depth</th><th>Applied to</th></tr></thead>
+      <tbody id="ai-body"></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Experience</span></div>
+
+    <div class="job">
+      <div class="job-date">Mar 2025 — Present</div>
+      <div>
+        <div class="job-role">Software Engineer · <span class="co">Wells Fargo</span></div>
+        <div class="job-loc">USA</div>
+        <ul>
+          <li>Architected cloud-native microservices (Java 21, Spring Boot, Kafka, PostgreSQL, Redis, Kubernetes) supporting <b>12M+ transactions daily</b> at 99.99% availability.</li>
+          <li>Engineered an enterprise GenAI knowledge assistant (OpenAI, LangChain, RAG, Pinecone, AWS Bedrock) searching <b>150,000+ documents</b> for compliance and support teams.</li>
+          <li>Designed an event-driven platform (Kafka, Lambda, SQS, EventBridge) sustaining <b>850,000+ async events/hour</b>.</li>
+          <li>Built an Agentic AI solution (Anthropic Claude, LangGraph, FastAPI) automating RCA for <b>1,500+ incidents/year</b>.</li>
+          <li>Cut average API response time from <b>420ms to 240ms</b> across mobile and online banking.</li>
+        </ul>
+        <div class="job-tags"><span>Java</span><span>Spring Boot</span><span>Kafka</span><span>AWS Bedrock</span><span>LangGraph</span><span>Kubernetes</span></div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">Nov 2020 — Aug 2023</div>
+      <div>
+        <div class="job-role">Software Engineer · <span class="co">Flipkart</span></div>
+        <div class="job-loc">India</div>
+        <ul>
+          <li>Built order management and inventory microservices supporting <b>6M+ customer orders/day</b>.</li>
+          <li>Built an event-driven catalog platform processing <b>4M+ product updates daily</b>.</li>
+          <li>Optimized backend modules with modern C++, cutting catalog search latency by <b>180ms</b>.</li>
+          <li>Built demand-forecasting utilities over <b>25M+ historical transactions</b> (Python, Scikit-learn, SageMaker).</li>
+        </ul>
+        <div class="job-tags"><span>Java</span><span>Spring Boot</span><span>Kafka</span><span>ReactJS</span><span>C++</span><span>Kubernetes</span></div>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-date">May 2018 — Nov 2020</div>
+      <div>
+        <div class="job-role">Software Engineer · <span class="co">Accenture</span></div>
+        <div class="job-loc">Chennai, India</div>
+        <ul>
+          <li>Modernized customer onboarding, billing, and case management for banking/insurance clients, supporting <b>500,000+ transactions/month</b>.</li>
+          <li>Delivered <b>40+ production service integrations</b> via secure REST APIs.</li>
+          <li>Built predictive analytics utilities over <b>8M+ operational records</b> (Python, Azure ML).</li>
+        </ul>
+        <div class="job-tags"><span>Java</span><span>Spring Boot</span><span>Angular</span><span>Azure</span><span>Node.js</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">Education</span></div>
+    <div class="edu">
+      <div>
+        <div class="edu-name">M.S. Computer &amp; Information Science</div>
+        <div class="edu-school">Southern Arkansas University, Magnolia, AR, USA</div>
+      </div>
+      <div class="edu-date">Dec 2024</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-card">
+      <h2>Let's talk</h2>
+      <p>Open to senior software engineer and AI engineer roles.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:yashwanthsingh997@gmail.com">yashwanthsingh997@gmail.com</a>
+        <a class="btn btn-ghost" href="tel:+19038646554">+1 (903) 864 6554</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/ADD_YOUR_HANDLE" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/ADD_YOUR_USERNAME" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>YASHWANTH S — SOFTWARE ENGINEER — TEXAS, USA</p>
+</footer>
+
+<script>
+  const metrics = [
+    ["TXN/DAY","12,000,000+"],["UPTIME","99.99%"],["EVENTS/HR","850,000+"],
+    ["RAG DOCS","150,000+"],["INCIDENTS AUTOMATED/YR","1,500+"],["API LATENCY","240ms"],
+    ["ORDERS/DAY","6,000,000+"],["YEARS EXP","7"]
+  ];
+  const track = document.getElementById('ticker');
+  const renderSet = () => metrics.map(([l,v]) => `<span>${l} <span class="val">${v}</span></span>`).join('');
+  track.innerHTML = renderSet() + renderSet();
+
+  const ai = [
+    ["Generative AI / LLMs","████░","LangChain, LangGraph, OpenAI APIs, Anthropic Claude, AWS Bedrock, prompt engineering"],
+    ["Retrieval-Augmented Generation","████░","Pinecone, vector embeddings, enterprise knowledge retrieval at 150K+ document scale"],
+    ["Agentic AI","███░░","LangGraph-based automation for incident investigation and root-cause analysis"],
+    ["AI-assisted development","███░░","GitHub Copilot integrated into production engineering workflows"],
+    ["Machine learning / predictive analytics","███░░","Scikit-learn, Pandas, NumPy, AWS SageMaker, Azure ML"]
+  ];
+  document.getElementById('ai-body').innerHTML = ai.map(([domain,bar,detail]) => {
+    const filled = (bar.match(/█/g)||[]).length;
+    const cells = Array.from({length:5},(_,i)=>`<span class="${i<filled?'on':''}"></span>`).join('');
+    return `<tr><td>${domain}</td><td><div class="bar">${cells}</div></td><td>${detail}</td></tr>`;
+  }).join('');
+</script>
+
+</body>
+</html>
